@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import minifyCss from 'gulp-minify-css';
+import cleanCSS from 'gulp-clean-css';
 import sass from 'gulp-sass';
 import prefix from 'gulp-autoprefixer';
 import rename from 'gulp-rename';
@@ -11,7 +11,7 @@ gulp.task('styles', () => {
     .pipe(prefix({
       browsers: ['last 15 versions'],
     }))
-    .pipe(minifyCss())
+    .pipe(cleanCSS({ compatibility: 'ie8' }))
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest(paths.dist.styles));
 });
